@@ -9,9 +9,9 @@ library(magrittr)
 library(tidyverse)
 
 
-marker_info<-read_csv("C:/Users/olsenk2/OneDrive - Oregon State University/Desktop/Omykiss_Siletz_2022_Data_Analyses/marker_info.csv")
+marker_info<-read_csv("C:/Users/olsenk2/OneDrive - Oregon State University/Desktop/Omykiss_Siletz_2023/GT-seq_genotyping_output/marker_info.csv")
 
-#this part changes the values of A=2, G=898, -=52, etc for the allele count columns to the actual values, and gets rid of some mess in the sample names (ind)
+# edit ind names and grab numeric a1 and a2 counts
 marker_info %<>%
   mutate(a1_count =  as.numeric(substr(a1_count, 3, nchar(a1_count)))) %>%
   mutate(a2_count =  as.numeric(substr(a2_count, 3, nchar(a2_count)))) %>%
@@ -19,7 +19,7 @@ marker_info %<>%
   mutate(ind = str_remove(ind, "\\.genos"))
 
 # read the raw genotypes file in to R
-genos_0.1<-read_csv("C:/Users/olsenk2/OneDrive - Oregon State University/Desktop/Omykiss_Siletz_2022_Data_Analyses/OmykissSiletz_GTs_0.1.csv")
+genos_0.1<-read_csv("C:/Users/olsenk2/OneDrive - Oregon State University/Desktop/Omykiss_Siletz_2023/GT-seq_genotyping_output/OmykissSiletz_GTs_0.1.csv")
 
 
 # add a field to mark controls
@@ -316,11 +316,11 @@ row.names(GT) <- genos_2.0$Sample
 GT_genind<- df2genind(GT, sep ="", ploidy=2,NA.char = "0")
 
 ##write genalex csv## 
-genind2genalex(GT_genind, filename = "Omykiss Siletz 2023 genalex.csv")
+genind2genalex(GT_genind, filename = "Omykiss Siletz 2022 genalex.csv")
 
 
 ##read in genalex file##
-GT_poppr<-read.genalex("C:/Users/olsenk2/Desktop/Omykiss_Siletz_2023_Data_Analyses/Omykiss Siletz 2023 genalex.csv")
+GT_poppr<-read.genalex("C:/Users/olsenk2/Desktop/Omykiss_Siletz_2023/filtering_record_filtered_genotypes/Omykiss Siletz 2022 genalex.csv")
 
 
 ##genetic distances among fish including self comparisons##
