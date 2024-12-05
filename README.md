@@ -8,4 +8,4 @@
 # Omy_GTseq_panel: info about the O. mykiss GT-seq panel.
 # filtering_record_filtered_genotypes: QC filtering record doc, R script used for QC filtering, filtered genotypes in genalex, genind, and as dataframe. 
 # analyses_results: Analyses and genotypic frequency R script, Omy5 and Omy28 genotypes, and powerpoint of figures. 
-# report: report document.
+
